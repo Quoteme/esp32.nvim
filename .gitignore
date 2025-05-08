@@ -1,6 +1,6 @@
 # ESP32 build artifacts
 build/
-build.clang/
+build/
 
 # CMake build files
 CMakeFiles/

@@ -4,7 +4,7 @@ local Snacks = require("snacks")
 
 ---@class ESP32Opts
 local defaults = {
-	build_dir = "build.clang",
+	build_dir = "build",
 	baudrate = 115200,
 }
 
@@ -136,7 +136,7 @@ function M.pick(cmd)
 	})
 end
 
---- Run idf.py reconfigure for build.clang
+--- Run idf.py reconfigure for build
 function M.reconfigure()
 	local build_dir = M.options.build_dir
 	Snacks.terminal.open("idf.py -B " .. build_dir .. " -D IDF_TOOLCHAIN=clang reconfigure", {

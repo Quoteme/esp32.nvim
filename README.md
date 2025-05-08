@@ -9,7 +9,7 @@ Uses [snacks.nvim](https://github.com/folke/snacks.nvim) for terminal and picker
 ## ✨ Features
 
 - 🧠 Automatically detects ESP-IDF-specific `clangd`
-- 🛠 Configures `build_dir` (`build.clang`) for IDF builds
+- 🛠 Configures `build_dir` (`build`) for IDF builds
 - 🖥️ Launch `idf.py monitor` and `idf.py flash` in floating terminals
 - 🔎 Pick available USB serial ports dynamically
 - 📋 Check project setup with `:ESPInfo`
@@ -22,7 +22,7 @@ Uses [snacks.nvim](https://github.com/folke/snacks.nvim) for terminal and picker
 
 - [ESP-IDF](https://github.com/espressif/esp-idf) installed and initialized
 - ESP-specific `clangd` is installed via `idf_tools.py install esp-clang`
-- ESP-specific `clangd` is configured via `idf.py -B build.clang -D IDF_TOOLCHAIN=clang reconfigure` (can be done via command `:ESPReconfigure`)
+- ESP-specific `clangd` is configured via `idf.py -B build -D IDF_TOOLCHAIN=clang reconfigure` (can be done via command `:ESPReconfigure`)
 - [snacks.nvim](https://github.com/folke/snacks.nvim) (automatically installed via LazyVim dependencies)
 
 ---
@@ -83,7 +83,7 @@ return {
   "folke/snacks.nvim",
  },
  opts = {
-  build_dir = "build.clang",
+  build_dir = "build",
  },
  config = function(_, opts)
   require("esp32").setup(opts)
@@ -143,7 +143,7 @@ return {
 
 ```lua
 opts = {
-  build_dir = "build.clang", -- directory for CMake builds (must match your clangd compile_commands.json)
+  build_dir = "build", -- directory for CMake builds (must match your clangd compile_commands.json)
 }
 ```
 
@@ -153,7 +153,7 @@ opts = {
 
 | Command           | Description                                                     |
 | :---------------- | :-------------------------------------------------------------- |
-| `:ESPReconfigure` | Runs `idf.py -B build.clang -D IDF_TOOLCHAIN=clang reconfigure` |
+| `:ESPReconfigure` | Runs `idf.py -B build -D IDF_TOOLCHAIN=clang reconfigure` |
 | `:ESPInfo`        | Shows ESP32 project setup info                                  |
 | `pick`            | Pick a serial port and run a command on it.                     |
 | `command`         | Run a command (uses last port if needed)                        |
@@ -181,14 +181,14 @@ idf_tools.py install esp-clang
 Create your build directory using clang:
 
 ```bash
-idf.py -B build.clang -D IDF_TOOLCHAIN=clang reconfigure
+idf.py -B build -D IDF_TOOLCHAIN=clang reconfigure
 ```
 
 From now on, **always** build and flash using:
 
 ```bash
-idf.py -B build.clang build
-idf.py -B build.clang flash
+idf.py -B build build
+idf.py -B build flash
 ```
 
 ---
