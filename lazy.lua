@@ -5,7 +5,7 @@ return {
 		"folke/snacks.nvim",
 	},
 	opts = {
-		build_dir = "build.clang",
+		build_dir = "build",
 	},
 	config = function(_, opts)
 		require("esp32").setup(opts)
